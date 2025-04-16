@@ -6,6 +6,7 @@ export function useKanban() {
     const columns: Column[] = [
         { id: 'todo', title: 'To Do' },
         { id: 'inprogress', title: 'In Progress' },
+        { id: 'testing', title: 'Testing' }, // 👈 Ny kolonne
         { id: 'done', title: 'Done' }
     ]
 
@@ -16,8 +17,11 @@ export function useKanban() {
         inprogress: [
             { id: 2, title: 'Kode Vue app', description: 'Work in progress' },
         ],
+        testing: [
+            { id: 4, title: 'Manuel test', description: 'Test af funktioner og UI' },
+        ],
         done: [
-            { id: 3, title: 'Installere Vuetify', description: '✅ Done' },
+            { id: 3, title: 'Installere Vuetify', description: 'Done' },
         ],
     })
 
@@ -44,12 +48,21 @@ export function useKanban() {
         }
     }
 
+    function moveCard(fromColumnId: string, toColumnId: string, card: Card, newIndex: number) {
+        // Fjern fra gammel kolonne
+        cards.value[fromColumnId] = cards.value[fromColumnId].filter(c => c.id !== card.id)
+
+        // Indsæt i ny kolonne på ny position
+        cards.value[toColumnId].splice(newIndex, 0, card)
+    }
+
     return {
         columns,
         cards,
         addCard,
         removeCard,
         editCard,
+        moveCard,
     }
 }
 

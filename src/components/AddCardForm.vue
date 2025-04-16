@@ -1,12 +1,14 @@
 <template>
-    <v-col cols="12" md="6" offset-md="3">
-        <v-text-field v-model="title" label="Titel" class="mb-2" density="compact" />
-        <v-text-field v-model="description" label="Beskrivelse" class="mb-2" density="compact" />
-        <v-select v-model="selectedColumn" :items="columns" item-title="title" item-value="id" label="Vælg kolonne"
-            class="mb-2" />
-        <v-btn @click="handleSubmit" color="primary" block>
-            Tilføj kort
-        </v-btn>
+    <v-col cols="12" md="4" offset-md="4">
+        <v-card class="pa-6 elevation-8">
+            <v-text-field v-model="title" label="Titel" class="mb-3" density="compact" />
+            <v-text-field v-model="description" label="Beskrivelse" class="mb-3" density="compact" />
+            <v-select v-model="selectedColumn" :items="columns" item-title="title" item-value="id" label="Vælg kolonne"
+                class="mb-4" />
+            <v-btn @click="handleSubmit" color="primary" block>
+                Tilføj kort
+            </v-btn>
+        </v-card>
     </v-col>
 </template>
 

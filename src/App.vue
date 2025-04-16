@@ -1,14 +1,8 @@
 <template>
   <v-container fluid>
     <v-row>
-      <KanbanColumn
-        v-for="(column, index) in columns"
-        :key="column.id"
-        :status="column.title"
-        :cards="cards[column.id]"
-        :isFirst="index === 0"
-        :id="column.id"
-      />
+      <KanbanColumn v-for="(column, index) in columns" :key="column.id" :status="column.title" :cards="cards[column.id]"
+        :isFirst="index === 0" :id="column.id" />
     </v-row>
     <v-row class="mt-10">
       <AddCardForm :columns="columns" @add="addCard" />
@@ -22,10 +16,11 @@ import { useKanban } from './composables/useKanban'
 import KanbanColumn from './components/KanbanColumn.vue'
 import AddCardForm from './components/AddCardForm.vue'
 
-const { columns, cards, addCard, removeCard, editCard } = useKanban()
+const { columns, cards, addCard, removeCard, editCard, moveCard } = useKanban()
 
 provide('addCard', addCard)
 provide('removeCard', removeCard)
 provide('editCard', editCard)
+provide('moveCard', moveCard)
 
 </script>
