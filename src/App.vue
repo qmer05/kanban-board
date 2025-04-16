@@ -22,9 +22,10 @@ import { useKanban } from './composables/useKanban'
 import KanbanColumn from './components/KanbanColumn.vue'
 import AddCardForm from './components/AddCardForm.vue'
 
-const { columns, cards, addCard, removeCard } = useKanban()
+const { columns, cards, addCard, removeCard, editCard } = useKanban()
 
 provide('addCard', addCard)
 provide('removeCard', removeCard)
+provide('editCard', editCard)
 
 </script>

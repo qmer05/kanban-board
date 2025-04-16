@@ -15,6 +15,7 @@
 import KanbanCard from './KanbanCard.vue'
 import type { Card } from '../types/Card'
 import { inject } from 'vue'
+import { provide } from 'vue'
 
 const removeCard = inject('removeCard') as Function
 
@@ -30,4 +31,6 @@ const props = defineProps<{
     isFirst?: boolean
     id: string
 }>()
+
+provide('columnId', props.id)
 </script>

@@ -35,11 +35,21 @@ export function useKanban() {
         cards.value[columnId] = cards.value[columnId].filter(card => card.id !== cardId)
     }
 
+    function editCard(columnId: string, cardId: number, newTitle: string, newDescription: string) {
+        const cardList = cards.value[columnId]
+        const card = cardList.find(c => c.id === cardId)
+        if (card) {
+            card.title = newTitle
+            card.description = newDescription
+        }
+    }
+
     return {
         columns,
         cards,
         addCard,
         removeCard,
+        editCard,
     }
 }
 
