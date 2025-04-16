@@ -51,7 +51,7 @@ function handleDelete(cardId: number) {
 }
 
 function handleChange(event: any) {
-    const { moved, added, removed } = event
+    const { added, removed } = event
 
     if (added && removed) {
         const card = added.element
